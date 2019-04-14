@@ -1,50 +1,60 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <QDesktopWidget>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+// ustawienia okna
+    /*QDesktopWidget dw;
+    int x=dw.width() * 0.8;
+    int y=dw.height() * 0.8;*/ //jeden ze sposobow odczytania rozmiaru calego desktopwidgeta
 
-    // == WINDOW SETTINGS ==
-        setWindowTitle("QT Przykladowa Aplikacja");
-        setMinimumSize(800, 450);
+    // get the dimension available on this screen
+    QSize availableSize = qApp->desktop()->availableGeometry().size();
+    int width = availableSize.width() * 0.95;
+    int height = availableSize.height() * 0.95;
 
-        // --- Pasek Menu
-        QMenuBar * menuBar = new QMenuBar(this);
-        setMenuBar(menuBar);
+    setFixedSize(width, height);
+    setWindowTitle("QT Przykladowa Aplikacja");
 
-        // -- File menu --
-        QMenu * menu = menuBar->addMenu("&Przyklady");
+   //   setMinimumSize(800, 450);
+    // --- Pasek Menu
+    QMenuBar * menuBar = new QMenuBar(this);
+    setMenuBar(menuBar);
 
-        // New
-        QAction * action = new QAction("&Przyklad zapytania", this);
-        connect(action, &QAction::triggered, this, &MainWindow::OnFileNew);
-        menu->addAction(action);
+    // -- File menu --
+    QMenu * menu = menuBar->addMenu("&Przyklady");
 
-        // Open
-        action = new QAction("&Open", this);
-        connect(action, &QAction::triggered, this, &MainWindow::OnFileOpen);
-        menu->addAction(action);
+    // New
+    QAction * action = new QAction("&Przyklad zapytania", this);
+    connect(action, &QAction::triggered, this, &MainWindow::OnFileNew);
+    menu->addAction(action);
 
-        // Save
-        action = new QAction("&Save", this);
-        connect(action, &QAction::triggered, this, &MainWindow::OnFileSave);
-        menu->addAction(action);
+    // Open
+    action = new QAction("&Open", this);
+    connect(action, &QAction::triggered, this, &MainWindow::OnFileOpen);
+    menu->addAction(action);
 
-        // separator
-        menu->addSeparator();
+    // Save
+    action = new QAction("&Save", this);
+    connect(action, &QAction::triggered, this, &MainWindow::OnFileSave);
+    menu->addAction(action);
 
-        // Exit
-        action = new QAction("&Exit", this);
-        connect(action, &QAction::triggered, this, &MainWindow::close);
-        menu->addAction(action);
+    // separator
+    menu->addSeparator();
 
-        // == STATUS BAR ==
-        QStatusBar * statusBar = new QStatusBar(this);
-        setStatusBar(statusBar);
+    // Exit
+    action = new QAction("&Exit", this);
+    connect(action, &QAction::triggered, this, &MainWindow::close);
+    menu->addAction(action);
+
+    // == STATUS BAR ==
+    QStatusBar * statusBar = new QStatusBar(this);
+    setStatusBar(statusBar);
 }
 
 MainWindow::~MainWindow()
