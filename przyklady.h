@@ -6,6 +6,7 @@ class Przyklady
 {
 public:
     Przyklady();
+    static void przeciazanieOperatorow();
 };
 
 #endif // PRZYKLADY_H

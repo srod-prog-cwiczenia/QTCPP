@@ -20,9 +20,9 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
-    void OnFileNew();
-    void OnFileOpen();
-    void OnFileSave();
+    void OnPrzyklad1();
+    void OnPrzyklad2();
+    void OnPrzyklad3();
 };
 
 #endif // MAINWINDOW_H

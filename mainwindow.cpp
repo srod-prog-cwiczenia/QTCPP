@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QDesktopWidget>
+#include "przyklady.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -31,24 +32,24 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // New
     QAction * action = new QAction("&Przyklad zapytania", this);
-    connect(action, &QAction::triggered, this, &MainWindow::OnFileNew);
+    connect(action, &QAction::triggered, this, &MainWindow::OnPrzyklad1);
     menu->addAction(action);
 
     // Open
-    action = new QAction("&Open", this);
-    connect(action, &QAction::triggered, this, &MainWindow::OnFileOpen);
+    action = new QAction("&Przyklad przeciazania operatorow", this);
+    connect(action, &QAction::triggered, this, &MainWindow::OnPrzyklad2);
     menu->addAction(action);
 
     // Save
-    action = new QAction("&Save", this);
-    connect(action, &QAction::triggered, this, &MainWindow::OnFileSave);
+    action = new QAction("&Dummy", this);
+    connect(action, &QAction::triggered, this, &MainWindow::OnPrzyklad3);
     menu->addAction(action);
 
     // separator
     menu->addSeparator();
 
     // Exit
-    action = new QAction("&Exit", this);
+    action = new QAction("&Koniec", this);
     connect(action, &QAction::triggered, this, &MainWindow::close);
     menu->addAction(action);
 
@@ -64,7 +65,7 @@ MainWindow::~MainWindow()
 
 
 //----- prywatne sloty ---------
-void MainWindow::OnFileNew()
+void MainWindow::OnPrzyklad1()
 {
     //statusBar()->showMessage("Przyklady -> New");
     QMessageBox msgBox;
@@ -76,12 +77,12 @@ void MainWindow::OnFileNew()
 
 }
 
-void MainWindow::OnFileOpen()
+void MainWindow::OnPrzyklad2()
 {
-    statusBar()->showMessage("Przyklady -> Open");
+    Przyklady::przeciazanieOperatorow();
 }
 
-void MainWindow::OnFileSave()
+void MainWindow::OnPrzyklad3()
 {
-    statusBar()->showMessage("Przyklady -> Save");
+    statusBar()->showMessage("Przyklady -> Dummy ");
 }
