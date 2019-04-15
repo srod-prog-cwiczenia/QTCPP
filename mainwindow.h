@@ -23,6 +23,7 @@ private slots:
     void OnPrzyklad1();
     void OnPrzyklad2();
     void OnPrzyklad3();
+    void OnPrzykladWyjatki();
 };
 
 #endif // MAINWINDOW_H

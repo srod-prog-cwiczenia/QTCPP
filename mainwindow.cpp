@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMenuBar * menuBar = new QMenuBar(this);
     setMenuBar(menuBar);
 
-    // -- File menu --
+    // -- Menu Przyklady --
     QMenu * menu = menuBar->addMenu("&Przyklady");
 
     // New
@@ -35,12 +35,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(action, &QAction::triggered, this, &MainWindow::OnPrzyklad1);
     menu->addAction(action);
 
-    // Open
+    // Przyklad przeciazania operatorow
     action = new QAction("&Przyklad przeciazania operatorow", this);
     connect(action, &QAction::triggered, this, &MainWindow::OnPrzyklad2);
     menu->addAction(action);
 
-    // Save
+    // Dummy (do wypelnienia)
     action = new QAction("&Dummy", this);
     connect(action, &QAction::triggered, this, &MainWindow::OnPrzyklad3);
     menu->addAction(action);
@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // separator
     menu->addSeparator();
 
-    // Exit
+    // Wyjście
     action = new QAction("&Koniec", this);
     connect(action, &QAction::triggered, this, &MainWindow::close);
     menu->addAction(action);
@@ -56,6 +56,13 @@ MainWindow::MainWindow(QWidget *parent) :
     // == STATUS BAR ==
     QStatusBar * statusBar = new QStatusBar(this);
     setStatusBar(statusBar);
+
+    QMenu * przyklady2 = menuBar->addMenu("&Przyklady 2");
+    // Przyklad do wyjątków
+    action = new QAction("&Wyjątki", this);
+    connect(action, &QAction::triggered, this, &MainWindow::OnPrzykladWyjatki);
+    przyklady2->addAction(action);
+
 }
 
 MainWindow::~MainWindow()
@@ -85,4 +92,8 @@ void MainWindow::OnPrzyklad2()
 void MainWindow::OnPrzyklad3()
 {
     statusBar()->showMessage("Przyklady -> Dummy ");
+}
+void MainWindow::OnPrzykladWyjatki() {
+    statusBar()->showMessage("Do oprogramowania!");
+    Przyklady::wyjatki();
 }

@@ -7,6 +7,7 @@ class Przyklady
 public:
     Przyklady();
     static void przeciazanieOperatorow();
+    static void wyjatki();
 };
 
 #endif // PRZYKLADY_H

@@ -11,6 +11,7 @@
 #include <iostream>
 #include <sstream>
 #include <memory>
+#include <exception>
 
 using namespace std;
 
@@ -76,4 +77,12 @@ void Przyklady::przeciazanieOperatorow() {
     }
     te->show();
 }
-
+//-------------------------------------------------------------
+void Przyklady::wyjatki() {
+  try {
+//TODO: ten przykład należy dokończyć
+  } catch (exception &E) {
+    cout << E.what();
+  }
+}
+//-------------------------------------------------------------
