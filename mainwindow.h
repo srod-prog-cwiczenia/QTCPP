@@ -24,6 +24,7 @@ private slots:
     void OnPrzyklad2();
     void OnPrzyklad3();
     void OnPrzykladWyjatki();
+    void OnPrzykladBazaDanych();
 };
 
 #endif // MAINWINDOW_H

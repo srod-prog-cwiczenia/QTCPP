@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QDesktopWidget>
 #include "przyklady.h"
+#include "bazydanych.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -57,10 +58,16 @@ MainWindow::MainWindow(QWidget *parent) :
     QStatusBar * statusBar = new QStatusBar(this);
     setStatusBar(statusBar);
 
+    // druga czesc menu:
     QMenu * przyklady2 = menuBar->addMenu("&Przyklady 2");
     // Przyklad do wyjątków
     action = new QAction("&Wyjątki", this);
     connect(action, &QAction::triggered, this, &MainWindow::OnPrzykladWyjatki);
+    przyklady2->addAction(action);
+
+    // Przyklad do bazy danych
+    action = new QAction("&Baza danych", this);
+    connect(action, &QAction::triggered, this, &MainWindow::OnPrzykladBazaDanych);
     przyklady2->addAction(action);
 
 }
@@ -96,4 +103,8 @@ void MainWindow::OnPrzyklad3()
 void MainWindow::OnPrzykladWyjatki() {
     statusBar()->showMessage("Do oprogramowania!");
     Przyklady::wyjatki();
+}
+void MainWindow::OnPrzykladBazaDanych() {
+    statusBar()->showMessage("Baza danych - przyklad");
+    bazyDanych::przyklad1();
 }
