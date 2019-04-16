@@ -5,6 +5,7 @@
 #include <QDesktopWidget>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
+#include <QMessageBox>
 
 #include <map>
 #include <string>
@@ -12,6 +13,9 @@
 #include <sstream>
 #include <memory>
 #include <exception>
+
+// jesli korzystamy z modulu bez widgetow to nalezy dac define BEZ_WIDGETOW
+#undef BEZ_WIDGETOW
 
 using namespace std;
 
@@ -43,7 +47,9 @@ Przyklady::Przyklady() {
 
 void Przyklady::przeciazanieOperatorow() {
 
+#ifndef BEZ_WIDGETOW
     QTextEdit *te = new QTextEdit();
+#endif
     // przy okazji prezentacja uzycia auto_ptr - uwaga - to przestarzale!
     auto_ptr<TOsoba> str1(new TOsoba);
     str1->imie = "Adam";
@@ -54,11 +60,14 @@ void Przyklady::przeciazanieOperatorow() {
     str2->nazwisko = "Nieznana";
 
     TOsoba *strPtr = new TOsoba("Iwona", "Proba");
+#ifdef BEZ_WIDGETOW
     cout << str1->imie << " " << str1->nazwisko << endl;
+#else
     te->append((str1->imie + " " + str1->nazwisko).c_str());
+#endif
     if (*str1 < *str2) {
-        te->append("*str1 < *str2");
         cout << "*str1 < *str2" << endl;
+        te->append("*str1 < *str2");
     }
     // zastosowanie sortowania poprzez przeciazenie operatora < :
     cout << "-----------------------------------" << endl;
@@ -79,10 +88,28 @@ void Przyklady::przeciazanieOperatorow() {
 }
 //-------------------------------------------------------------
 void Przyklady::wyjatki() {
-  try {
-//TODO: ten przykład należy dokończyć
-  } catch (exception &E) {
-    cout << E.what();
-  }
+    try {
+        throw "Wyjatek wlasny";
+    } catch (const char* e) {
+        ostringstream strs;
+        strs << "Nastapil wyjatek: " << e;
+        string txt = strs.str();
+#ifdef BEZ_WIDGETOW
+        cout << txt << endl;
+#else
+        QMessageBox msgBox;
+        msgBox.setText(txt.c_str());
+        //msgBox.setInformativeText("");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.setDefaultButton(QMessageBox::Ok);
+        int ret = msgBox.exec();
+#endif
+    }
+}
+//-------------------------------------------------------------
+void Przyklady::wskazniki() {
+    //podwojny wskaznik:
+    char c[10][10];
+    char *wsk = (char *)c;
 }
 //-------------------------------------------------------------

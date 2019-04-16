@@ -74,7 +74,7 @@ MainWindow::~MainWindow()
 //----- prywatne sloty ---------
 void MainWindow::OnPrzyklad1()
 {
-    //statusBar()->showMessage("Przyklady -> New");
+    //statusBar()->showMessage("Przyklady -> Zapytanie");
     QMessageBox msgBox;
     msgBox.setText("To jest przyklad zapytania.");
     msgBox.setInformativeText("Mozliwe odpowiedzi na zapytanie typu ,,zapisac''?");
