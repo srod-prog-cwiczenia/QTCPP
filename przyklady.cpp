@@ -33,12 +33,14 @@ struct TOsoba {
     friend bool operator>(const TOsoba &a, const TOsoba &b) {
         return b < a;
     }
-    friend bool operator!(const TOsoba &a) {
-        return !a.imie.empty() || !a.nazwisko.empty();
+    friend bool operator==(const TOsoba &a, const TOsoba &b) {
+        return a.imie == b.imie && a.nazwisko == b.nazwisko;
     }
-
+    friend bool operator!(const TOsoba &a) {
+        return !(bool)a;
+    }
     operator bool () const {
-        return imie.empty() && nazwisko.empty();
+        return !imie.empty() || !nazwisko.empty();
     }
 };
 
@@ -73,16 +75,19 @@ void Przyklady::przeciazanieOperatorow() {
     cout << "-----------------------------------" << endl;
     map<TOsoba, double> mapOsoKwota;
     mapOsoKwota[TOsoba("Anna", "Test")] = 3000.00;
-    mapOsoKwota[TOsoba("Dorota", "Nieznana")] = 1000.00;
+    mapOsoKwota[TOsoba("Kamila", "Nieznana")] = 1000.00;
     mapOsoKwota[TOsoba("Adam", "Kowalski")] = 2000.00;
+    mapOsoKwota[TOsoba("Dorota", "Koralewska")] = 4000.00;
     for (map<TOsoba, double>::iterator ite = mapOsoKwota.begin(); ite != mapOsoKwota.end(); ite++) {
         std::ostringstream strs;
-        strs << ite->second;
-        std::string doubleStr = strs.str();
-        te->append((ite->first.imie + " " + ite->first.nazwisko +
-                   " -> " + doubleStr).c_str());
-        cout << ite->first.imie << " " << ite->first.nazwisko <<
+        strs << ite->first.imie << " " << ite->first.nazwisko <<
             " -> " << ite->second << endl;
+        string txt = strs.str();
+#ifdef BEZ_WIDGETOW
+        cout << txt;
+#else
+        te->append(txt.c_str());
+#endif
     }
     te->show();
 }
@@ -112,4 +117,15 @@ void Przyklady::wskazniki() {
     char c[10][10];
     char *wsk = (char *)c;
 }
+//-------------------------------------------------------------
+/*
+  Przyklad uzycia szablonu:
+*/
+template <typename T>
+ class TTrojka
+ {
+    public:
+       TTrojka(T aX, T aY, T aZ ): x(aX), y(aY), z(aZ) {}
+       T x, y, z;
+ };
 //-------------------------------------------------------------

@@ -22,9 +22,10 @@ private:
 private slots:
     void OnPrzyklad1();
     void OnPrzyklad2();
-    void OnPrzyklad3();
+    void OnDummy();
     void OnPrzykladWyjatki();
     void OnPrzykladBazaDanych();
+    void OnEdycjaPol();
 };
 
 #endif // MAINWINDOW_H

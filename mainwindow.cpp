@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QDesktopWidget>
+//#include <QWidget> - zapewne w MainWindow zbedne
 #include "przyklady.h"
 #include "bazydanych.h"
 
@@ -41,9 +42,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(action, &QAction::triggered, this, &MainWindow::OnPrzyklad2);
     menu->addAction(action);
 
-    // Dummy (do wypelnienia)
+    // Edycja pol
+    action = new QAction("&Edycja pol", this);
+    connect(action, &QAction::triggered, this, &MainWindow::OnEdycjaPol);
+    menu->addAction(action);
+
+    // Dummy (do pozniejszego uzycia)
     action = new QAction("&Dummy", this);
-    connect(action, &QAction::triggered, this, &MainWindow::OnPrzyklad3);
+    connect(action, &QAction::triggered, this, &MainWindow::OnDummy);
     menu->addAction(action);
 
     // separator
@@ -96,7 +102,7 @@ void MainWindow::OnPrzyklad2()
     Przyklady::przeciazanieOperatorow();
 }
 
-void MainWindow::OnPrzyklad3()
+void MainWindow::OnDummy()
 {
     statusBar()->showMessage("Przyklady -> Dummy ");
 }
@@ -107,4 +113,15 @@ void MainWindow::OnPrzykladWyjatki() {
 void MainWindow::OnPrzykladBazaDanych() {
     statusBar()->showMessage("Baza danych - przyklad");
     bazyDanych::przyklad1();
+}
+void MainWindow::OnEdycjaPol() {
+    statusBar()->showMessage("Do utworzenia nowe okno");
+//TODO utworzyc nowe okno przez QWidgeta i tam ten kod wkopiowac
+    /*QGroupBox *echoGroup = new QGroupBox(tr("Echo"));
+    QLabel *echoLabel = new QLabel(tr("Mode:"));
+    QComboBox *echoComboBox = new QComboBox;
+    echoComboBox->addItem(tr("Normal"));
+    echoComboBox->addItem(tr("Password"));
+    echoComboBox->addItem(tr("PasswordEchoOnEdit"));
+    echoComboBox->addItem(tr("No Echo")); */
 }
