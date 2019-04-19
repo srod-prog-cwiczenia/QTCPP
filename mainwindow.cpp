@@ -5,6 +5,7 @@
 //#include <QWidget> - zapewne w MainWindow zbedne
 #include "przyklady.h"
 #include "bazydanych.h"
+#include "daneosoby.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -116,12 +117,6 @@ void MainWindow::OnPrzykladBazaDanych() {
 }
 void MainWindow::OnEdycjaPol() {
     statusBar()->showMessage("Do utworzenia nowe okno");
-//TODO utworzyc nowe okno przez QWidgeta i tam ten kod wkopiowac
-    /*QGroupBox *echoGroup = new QGroupBox(tr("Echo"));
-    QLabel *echoLabel = new QLabel(tr("Mode:"));
-    QComboBox *echoComboBox = new QComboBox;
-    echoComboBox->addItem(tr("Normal"));
-    echoComboBox->addItem(tr("Password"));
-    echoComboBox->addItem(tr("PasswordEchoOnEdit"));
-    echoComboBox->addItem(tr("No Echo")); */
+    DaneOsoby *daneOso = new DaneOsoby;
+    daneOso->showNormal();
 }

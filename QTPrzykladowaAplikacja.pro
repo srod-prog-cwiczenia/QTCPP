@@ -15,12 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     przyklady.cpp \
-    bazydanych.cpp
+    bazydanych.cpp \
+    daneosoby.cpp
 
 LIBS += -lsqlite3
 
 HEADERS  += mainwindow.h \
     przyklady.h \
-    bazydanych.h
+    bazydanych.h \
+    daneosoby.h
 
 FORMS    += mainwindow.ui
