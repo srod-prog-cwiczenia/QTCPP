@@ -9,6 +9,9 @@ public:
     static void przeciazanieOperatorow();
     static void wyjatki();
     static void wskazniki();
+    static void wskazniki1();
+    static void wskazniki2();
+    static void wskazniki3();
 };
 
 #endif // PRZYKLADY_H

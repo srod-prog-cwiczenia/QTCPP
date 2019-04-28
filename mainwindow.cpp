@@ -77,6 +77,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(action, &QAction::triggered, this, &MainWindow::OnPrzykladBazaDanych);
     przyklady2->addAction(action);
 
+    // Wskaźniki (przykłady):
+    action = new QAction("&Wskazniki", this);
+    connect(action, &QAction::triggered, this, &MainWindow::OnPrzykladWskazniki);
+    przyklady2->addAction(action);
+
 }
 
 MainWindow::~MainWindow()
@@ -119,4 +124,8 @@ void MainWindow::OnEdycjaPol() {
     statusBar()->showMessage("Do utworzenia nowe okno");
     DaneOsoby *daneOso = new DaneOsoby;
     daneOso->showNormal();
+}
+void MainWindow::OnPrzykladWskazniki() {
+    statusBar()->showMessage("Wskazniki - przyklad");
+    Przyklady::wskazniki();
 }

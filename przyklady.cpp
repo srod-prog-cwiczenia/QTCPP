@@ -112,10 +112,66 @@ void Przyklady::wyjatki() {
     }
 }
 //-------------------------------------------------------------
-void Przyklady::wskazniki() {
+void Przyklady::wskazniki1() {
     //podwojny wskaznik:
     char c[10][10];
     char *wsk = (char *)c;
+}
+//-------------------------------------------------------------
+void Przyklady::wskazniki2() {
+// proste ustawianie wskaznika oraz alokowanie i jego zwalnianie
+    int *ptr = NULL; //wskaźnik na int
+    int licznik = 13;
+    //ustawienie wskaźnika na licznik:
+    ptr = &licznik;
+    ptr = NULL; //znów wracamy do pustego wskazania
+                //ale można też pobrać pamięć dla wskaźnika:
+    ptr = new int;
+    *ptr = 17;
+    // a potem ją zwolnić
+    delete ptr;
+}
+//-------------------------------------------------------------
+void Przyklady::wskazniki3() {
+    /*
+      ktoś umieścił w kodzie programu tablicę (liczba dni poszczegolnych miesiecy):
+    */
+    unsigned int liczbaDni[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    //bez wskaźników przesumowanie elementów tej tablicy jest łatwe:
+    unsigned int suma = 0;
+    for (int i = 0; i < 12; suma += liczbaDni[i++]);
+    cout << "Suma dni: " << suma << endl;
+    //zadanie: przesumować za pomocą wskaźników:
+    suma = 0;
+    for (unsigned int *wsk = liczbaDni; wsk <= &liczbaDni[11]; wsk++) {
+        suma += *wsk;
+    }
+    cout << "Suma dni obliczona wskaźnikami: " << suma << endl;
+// zadanie: jak zmodyfikowac ten łańcuch, np. zmienić litery na duże:
+    char *lancuch = "Dzis jest dwudziesty ósmy dzień kwietnia!";
+    //nie ma rady, trzeba skopiować go na inny obszar pamięci:
+    //najpierw alokujemy pamięć:
+    char *kopiaStr = (char *)malloc(strlen(lancuch) + 1);
+    //strcpy_s(kopiaStr, strlen(lancuch) + 1, lancuch);
+    char *source = lancuch;
+    char *dest = kopiaStr;
+    /*while (*source) {
+        *dest = *source;
+        dest++;
+        source++;
+    }
+    *dest = '\0';*/ // poniżej jest bardzo zwarty kod:
+
+    while (*dest++ = *source++);
+
+    cout << "Tu powinien być dłuuuugi łańcuch: " << kopiaStr << endl;
+    free(kopiaStr);
+}
+//-------------------------------------------------------------
+void Przyklady::wskazniki() {
+  wskazniki1();
+  wskazniki2();
+  wskazniki3();
 }
 //-------------------------------------------------------------
 /*

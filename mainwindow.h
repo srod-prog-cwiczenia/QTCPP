@@ -25,6 +25,7 @@ private slots:
     void OnDummy();
     void OnPrzykladWyjatki();
     void OnPrzykladBazaDanych();
+    void OnPrzykladWskazniki();
     void OnEdycjaPol();
 };
 
