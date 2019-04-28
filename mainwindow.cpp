@@ -6,6 +6,7 @@
 #include "przyklady.h"
 #include "bazydanych.h"
 #include "daneosoby.h"
+#include "comboboxfrm.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -46,6 +47,11 @@ MainWindow::MainWindow(QWidget *parent) :
     // Edycja pol
     action = new QAction("&Edycja pol", this);
     connect(action, &QAction::triggered, this, &MainWindow::OnEdycjaPol);
+    menu->addAction(action);
+
+    // Dummy (do pozniejszego uzycia)
+    action = new QAction("&Menu combo box", this);
+    connect(action, &QAction::triggered, this, &MainWindow::OnComboBoxFrm);
     menu->addAction(action);
 
     // Dummy (do pozniejszego uzycia)
@@ -112,6 +118,11 @@ void MainWindow::OnDummy()
 {
     statusBar()->showMessage("Przyklady -> Dummy ");
 }
+void MainWindow::OnComboBoxFrm() {
+    statusBar()->showMessage("Okno z combobox");
+    ComboBoxFrm *frm = new ComboBoxFrm;
+    frm->showNormal();
+}
 void MainWindow::OnPrzykladWyjatki() {
     statusBar()->showMessage("Do oprogramowania!");
     Przyklady::wyjatki();
@@ -124,6 +135,9 @@ void MainWindow::OnEdycjaPol() {
     statusBar()->showMessage("Do utworzenia nowe okno");
     DaneOsoby *daneOso = new DaneOsoby;
     daneOso->showNormal();
+    /*TODO: tak można rzekomo ustawić modalność okna ALE w tym kontekście nie działa (dlaczego?) */
+    //daneOso->setWindowModality(Qt::WindowModal);
+
 }
 void MainWindow::OnPrzykladWskazniki() {
     statusBar()->showMessage("Wskazniki - przyklad");

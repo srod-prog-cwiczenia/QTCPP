@@ -23,6 +23,7 @@ private slots:
     void OnPrzyklad1();
     void OnPrzyklad2();
     void OnDummy();
+    void OnComboBoxFrm();
     void OnPrzykladWyjatki();
     void OnPrzykladBazaDanych();
     void OnPrzykladWskazniki();

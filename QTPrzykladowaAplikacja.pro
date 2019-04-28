@@ -16,13 +16,15 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     przyklady.cpp \
     bazydanych.cpp \
-    daneosoby.cpp
+    daneosoby.cpp \
+    comboboxfrm.cpp
 
 LIBS += -lsqlite3
 
 HEADERS  += mainwindow.h \
     przyklady.h \
     bazydanych.h \
-    daneosoby.h
+    daneosoby.h \
+    comboboxfrm.h
 
 FORMS    += mainwindow.ui
