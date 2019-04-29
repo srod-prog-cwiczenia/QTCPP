@@ -90,6 +90,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+void MainWindow::komunikatOPrzeniesieniu() {
+    QMessageBox msgBox;
+    msgBox.setText("Przeniesione do menu combo box");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.exec();
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -111,7 +119,8 @@ void MainWindow::OnPrzyklad1()
 
 void MainWindow::OnPrzyklad2()
 {
-    Przyklady::przeciazanieOperatorow();
+    komunikatOPrzeniesieniu();
+    //Przyklady::przeciazanieOperatorow();
 }
 
 void MainWindow::OnDummy()
@@ -141,5 +150,6 @@ void MainWindow::OnEdycjaPol() {
 }
 void MainWindow::OnPrzykladWskazniki() {
     statusBar()->showMessage("Wskazniki - przyklad");
-    Przyklady::wskazniki();
+    komunikatOPrzeniesieniu();
+    //Przyklady::wskazniki();
 }

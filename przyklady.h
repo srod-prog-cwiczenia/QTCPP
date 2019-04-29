@@ -12,6 +12,7 @@ public:
     static void wskazniki1();
     static void wskazniki2();
     static void wskazniki3();
+    static void kopiowanieCharGwiazdka();
 };
 
 #endif // PRZYKLADY_H

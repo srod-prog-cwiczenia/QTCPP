@@ -185,3 +185,35 @@ template <typename T>
        T x, y, z;
  };
 //-------------------------------------------------------------
+void Przyklady::kopiowanieCharGwiazdka() {
+    //stały napis (,,niemutowalny'')
+    const char *napis = "Dziś jest poniedziałek";
+    //alokacja pamięci na kopię łańcucha
+    char *strWsk = (char *)malloc(strlen(napis) + 1);
+    //kopiujemy napis:
+    //strcpy_s(strWsk, strlen(napis) + 1, napis);
+    char *ws = (char *)napis;
+    char *wd = strWsk;
+    while (*wd++ = *ws++);
+    cout << "Tu powinien być napis: " << strWsk << endl;
+    //trzeba się ,,przejść'' po strWsk i pozamieniać małe litery na duże
+    wd = strWsk;
+    //wersja 1:
+    /*while (*wd) {
+        *wd++ = toupper(*wd);
+    }*/
+
+    // wersja 2
+//	while (*wd++ = toupper(*wd));
+
+    // wersja 3:
+    //while (*wd++ = ('a' <= *wd && *wd <= 'z' ? *wd - 32 : *wd));
+
+    for (char *wsk = strWsk; *wsk; wsk++) {
+        if ('a' <= *wsk && *wsk <= 'z')
+            *wsk -= 32;
+    }
+    cout << "Tu powinien być napis dużymi literami: " << strWsk << endl;
+    free(strWsk);
+}
+//-------------------------------------------------------------

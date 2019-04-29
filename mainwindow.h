@@ -18,7 +18,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
+    void komunikatOPrzeniesieniu();
 private slots:
     void OnPrzyklad1();
     void OnPrzyklad2();
