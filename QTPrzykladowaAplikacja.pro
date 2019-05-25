@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     przyklady.cpp \
     bazydanych.cpp \
     daneosoby.cpp \
-    comboboxfrm.cpp
+    comboboxfrm.cpp \
+    zadanienazaliczenie.cpp
 
 LIBS += -lsqlite3
 
@@ -25,6 +26,7 @@ HEADERS  += mainwindow.h \
     przyklady.h \
     bazydanych.h \
     daneosoby.h \
-    comboboxfrm.h
+    comboboxfrm.h \
+    zadanienazaliczenie.h
 
 FORMS    += mainwindow.ui
