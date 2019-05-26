@@ -1,7 +1,5 @@
 #ifndef PRZYKLADY_H
 #define PRZYKLADY_H
-
-
 class Przyklady
 {
 public:
@@ -14,5 +12,4 @@ public:
     static void wskazniki3();
     static void kopiowanieCharGwiazdka();
 };
-
 #endif // PRZYKLADY_H

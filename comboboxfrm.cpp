@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include "przyklady.h"
+#include "narzedzia.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ ComboBoxFrm::ComboBoxFrm(QWidget *parent) : QWidget(parent)
     echoComboBox->addItem(tr("Przykłady wskaźników"));
     echoComboBox->addItem(tr("Przykłady przeciążania operatorów"));
     echoComboBox->addItem(tr("Kopiowanie char*"));
-    echoComboBox->addItem(tr("Na razie opcja nieużywana 1"));
+    echoComboBox->addItem(tr("Test klasy CacheString2String (narzedzia.h)"));
     echoComboBox->addItem(tr("Na razie opcja nieużywana 2"));
 
     connect(btn1, SIGNAL (clicked()), this, SLOT (zlapBtn1()));
@@ -41,6 +42,9 @@ void ComboBoxFrm::zlapBtn1() {
       break;
     case 2:
       Przyklady::kopiowanieCharGwiazdka();
+      break;
+    case 3:
+      CacheString2StringTesty::run();
       break;
     default: {
         std::ostringstream strs;

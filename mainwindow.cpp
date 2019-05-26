@@ -113,8 +113,8 @@ void MainWindow::OnPrzyklad1()
     msgBox.setInformativeText("Mozliwe odpowiedzi na zapytanie typu ,,zapisac''?");
     msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
     msgBox.setDefaultButton(QMessageBox::Save);
-    int ret = msgBox.exec();
-
+    /*int ret = */msgBox.exec();
+    // ujęcie int ret tylko celem wytępienia warninga o nieużywanej zmiennej ret
 }
 
 void MainWindow::OnPrzyklad2()
